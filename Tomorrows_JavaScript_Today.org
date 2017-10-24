@@ -1,0 +1,128 @@
+#+OPTIONS: toc:nil num:nil timestamp:nil
+#+OPTIONS: reveal_history:t frag:t
+#+REVEAL_THEME: simple
+#+REVEAL_EXTRA_CSS:
+#+REVEAL_PLUGINS: (notes)
+#+REVEAL_MARGIN: 0.05
+#+AUTHOR: Kris Jenkins
+#+COPYRIGHT: © Kris Jenkins, 2017
+#+TITLE: PureScript - Tomorrow's JavaScript Today
+#+EMAIL: @krisajenkins
+#+DATE:
+* Outline
+Why
+What
+How
+What If
+
+
+*** JavaScript's Achievements
+ - The only programming language your grandmother has installed.
+ - There is one JavaScript, not one per browser. That agreement is a
+   feat that probably won't be repeated.
+ - Flexible, but many sharp edges.
+ - Was never designed to scale.
+ - Was designed on 80s/90s technology.
+*** Tomorrow
+ - We would keep the flexibility.
+ - We would keep the universality.
+ - We would sort out the bugs in the spec.
+ - We would look for a design that works in the large.
+ - We would look for a design that's learnt from the past 20-30 years.
+
+**** TODO The above might look good as a two-columned comparison table.
+** PureScript
+...is a very strong candidate for that title. There's some unfamiliar
+syntax, and there are a lot of unfamiliar ideas (even though they're
+percolating through to the mainstream now), but given the speed our
+industry sometimes progresses, it's easy to believe that what
+mainstream JavaScript looks like in two decades, you can have today.
+
+** Let's Take a Whistle-Stop Tour - Features
+**** TODO All these bits need concrete examples.
+*** Data Design - ADTs
+ADTs. Data description.
+
+Null handling in templates is a marker that nulls are hairy, and there
+is no agreed on solution.
+
+**** Places I Declare Types
+https://twitter.com/amasad/status/921481680195428352
+- Database model defs
+- Flow types
+- React propTypes
+- When validating/sanitizing inputs
+- GraphQL schemas!
+*** Semantics - Mathematics
+#+BEGIN_QUOTE
+> null >= -2
+true
+> null >= -1
+true
+> null >= 0
+true
+> null >= 1
+false
+> null >= 2
+false
+#+END_QUOTE
+
+*** Functional Programming
+*** Global Consistency Checks - Type Checker
+Global consistency checker - What if your assumptions in one part of
+the system conflict with those in another part?
+*** A Language For Design - Type Signatures
+*** Complexity Tracking - Side Effects
+Were ninjas mercenaries? Because if they were, if they were hidden
+agents who could switch allegiance, then they're a good allegory for
+side-effects.
+*** Life In The Tar Pit - Making Bad Code Better
+Language support for making bad code better. Because you don't write
+bad code, and I did once, but I didn't commit it, but /they/ write bad
+code.
+
+#+BEGIN_QUOTE
+Better to have bad Mu than bad C++ - David Smith
+#+END_QUOTE
+
+*** Testing - Types, Quickcheck, Strongcheck and TDD
+Nyancat output!
+*** TODO Checklist of other features
+- Modules.
+- Streaming data structures.
+- MonadRec for memory-consumption guarantees.
+- Rendering architecture.
+*** Connecting to the Past - Interop!
+** Practicalities
+If you want to get started, here is some how.
+*** Pulp
+*** Halogen?
+*** Demo?
+FizzBuzz - "How to get a job you don't want."
+*** PureScript Book
+* Thoughts
+
+Can we get some data from common Stack Overflow problems?
+
+Can we get some quotes about when you shouldn't (over)use TDD?
+
+A live language for talking about design.
+
+** TODO Pull the problem upstream? (Gabriel Gonzalez)
+
+What could possibly go wrong?
+JavaScript FUD - look at all the things that could go wrong.
+
+Google for something like, "I've just spent a week debugging..."
+
+PureScript has better building blocks thank JavaScript. Generators in
+N lines. Futures in N lines.
+
+Fun things I've built in PureScript is always a good convincer.
+
+In what ways are JS and PS similar? In what ways are advanced JS and
+vanilla PS similar?
+
+* TODO Checklist
+** TODO Black text on white background!
+** TODO Check screen resolution!

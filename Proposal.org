@@ -1,0 +1,26 @@
+* Idea 3: PureScript: Tomorrow's JavaScript Today
+
+ It's almost impossible to imagine the web without JavaScript. And as
+  professional web developers, it's almost heresy to do so.  But
+  despite 20 years of maturity and a truly frantic pace of innovation,
+  JavaScript isn't just the sea we swim in, it's also the shark trying
+  to bite us. JavaScript is fragile, complex, and just plain hard to
+  get right.
+
+ So if we imagined a modern JavaScript, one totally free from baggage,
+  what would we have? Which of JavaScript's mistakes would it correct?
+  What features would it ship with?  And what, if anything could it
+  learn from the past 30 years of computer science research?
+
+ Simply put, it would look a lot like PureScript. PureScript is most
+  of what we've learnt about programming language design in the place
+  where we need the most help.  In this talk you'll learn what
+  PureScript is, what strengths it offers you and what weaknesses it
+  avoids. You'll learn what it can do and how you can do it, so you
+  can get started with tomorrow's JavaScript today...
+
+*** Takeaways
+ - What PureScript is, the strengths it brings to web development and the weaknesses it correct.
+ - Why, if you care about getting things right, you care about
+   side-effects.
+ - How to dive in to modern, functional web programming feet-first.
