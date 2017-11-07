@@ -1,0 +1,13 @@
+.reveal section img {
+    border-style: none;
+    box-shadow: none;
+}
+
+.reveal blockquote {
+    border: solid 1px cadetblue;
+    box-shadow: none;
+    text-align: left;
+}
+
+
+
