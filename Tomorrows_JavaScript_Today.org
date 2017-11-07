@@ -398,8 +398,9 @@ the arguments right.
 - Can track relationships between code.
 - Can track growing complexity.
 - Can be understood on two logical levels.
-* Making Bad Code Better
+* From Here To The Future
 
+** Recovering From Bad Code
 #+BEGIN_QUOTE
 +It's better to inherit bad Haskell than   
 bad C.+
@@ -413,9 +414,7 @@ It's better to inherit bad PureScript than bad JavaScript.
 Language support for making bad code better. Because you don't write
 bad code, and I did once, but I didn't commit it, but /they/ write bad
 code.
-#+END_NOTES
-** Pulling back from a bad code base.
-#+BEGIN_NOTES
+
 Everyone talks about best practices and how to do it right. But
 no-one's talking about how to correct course when it goes wrong. We
 just say, "REWRITE".
@@ -424,10 +423,11 @@ just say, "REWRITE".
 #+BEGIN_CENTER
 Connecting to the Past!
 #+END_CENTER
-* And More...
+* And More...                                                      :noexport:
 ** Testing - Types, Quickcheck, Strongcheck and TDD
 *Nyancat output!
 ** Phantom Types
+** Streams
 * Practicalities
 #+BEGIN_CENTER
 How to get started.

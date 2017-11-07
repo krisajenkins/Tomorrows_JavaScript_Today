@@ -1,21 +1,38 @@
 module Main where
 
 import Prelude
-
 import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, log)
+import Control.Monad.Eff.Console (CONSOLE, logShow)
+import Data.Array ((..))
 import Data.Date (Date)
+import Data.Generic (class Generic, gShow)
+import Data.Traversable (for_)
+import Data.Tuple (Tuple(Tuple))
 
-data PaymentResponse
-  = Paid { receiptId :: String, amount :: Number }
-  | CardExpired { expiryDate :: Date, lastFourDigits :: String }
-  | HttpError { statusCode :: Int, message :: String }
-  | AuthError
+data Answer 
+  = Fizz
+  | Buzz
+  | FizzBuzz
+  | Natural Int
 
-handleResponse :: PaymentResponse -> String
-handleResponse (Paid {receiptId}) = ?q
-handleResponse (CardExpired {lastFourDigits}) = ?q
+derive instance genericAnswer :: Generic Answer
+
+instance showAnswer :: Show Answer where
+  show = gShow
+
+------------------------------------------------------------
+
+fizzBuzz :: Int -> Answer
+fizzBuzz n =
+  case Tuple (mod n 3) (mod n 5) of
+    Tuple 0 0 -> FizzBuzz
+    Tuple 0 _ -> Fizz
+    Tuple _ 0 -> Buzz
+    Tuple _ _ -> Natural n
+
+------------------------------------------------------------
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
-main = do
-  log "Hello sailor!"
+main =
+  for_ (1..20)
+    (fizzBuzz >>> logShow)
