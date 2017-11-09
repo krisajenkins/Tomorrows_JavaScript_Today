@@ -1,5 +1,5 @@
 #+OPTIONS: toc:nil num:nil timestamp:nil
-#+OPTIONS: reveal_control:nil reveal_single_file:t reveal_title_slide:nil
+#+OPTIONS: reveal_control:nil reveal_title_slide:nil
 #+OPTIONS: reveal_history:t frag:t reveal_slide_number:nil
 #+REVEAL_THEME: simple
 #+REVEAL_ROOT: node_modules/reveal.js
@@ -139,6 +139,8 @@ data User
 data Maybe a
   = Just a
   | Nothing
+  
+-- Maybe User
 #+END_SRC
 #+BEGIN_NOTES
 If you want uncertainty, you get it. But it's not the default.
@@ -183,7 +185,33 @@ you write your schema down and ones where you don't.
   https://vimeo.com/45136212
 #+END_NOTES
 
+* 2. Consistency
+** How Do We Make Software Work?
+** We Build Pieces
+file:Consistency_needs_provides.png
+#+BEGIN_NOTES
+Every piece of code is a relationship with its user.
+#+END_NOTES
+** We Check Them
+file:Consistency_hope1.png
+** Best Case
+file:Consistency_hope2.png
+** In The Large  
+file:Consistency_Relationships.png
+
+   
+#+BEGIN_NOTES
+The point is, we don't really have good ways of saying, "I need
+this. I offer this." Except /saying/ it.
+#+END_NOTES
+
+** +Type-Checker+
++Good Linter+
+
+/Really/ Good Linters can help.
+
 ** Language Tracks Usage
+
 #+BEGIN_SRC purescript
 handleResponse :: PaymentResponse -> HTML
 handleResponse (Paid {receiptId}) = ...
@@ -204,30 +232,6 @@ The following additional cases are required to cover all inputs:
 Alternatively, add a Partial constraint to the type of the
 enclosing value.
 #+END_SRC
-
-* 2. Whole-System Consistency
-** How Do We Make Software Work?
-*** TODO Diagram 1
- Inside: Hope & Documentation 
- Outside: Hope & Unit Tests
-
-*** TODO Diagram 2
- Inside: HOPE & documentation 
- Outside: hope & UNIT TESTS
-
-*** TODO Diagram 3
-  Big Picture
-  
-#+BEGIN_NOTES
-The point is, we don't really have good ways of saying, "I need
-this. I offer this." Except /saying/ it.
-#+END_NOTES
-
-** +Type-Checker+ Good Linter
-/Really/ Good Linter
-
-Global consistency checker - What if your assumptions in one part of
-the system conflict with those in another part?
 
 ** Define data in one place, have it checked everywhere for free.
 ** Documentation (of a sort), free at the point of need.
@@ -326,6 +330,29 @@ isBetween ::
   -> DateUnits
   -> Bool
 #+END_SRC
+** Recovering From Bad Code
+#+BEGIN_QUOTE
++It's better to inherit bad Haskell than   
+bad C.+
+
+It's better to inherit bad PureScript than bad JavaScript.
+
+-- David Smith (ish)
+#+END_QUOTE
+
+#+BEGIN_NOTES
+Language support for making bad code better. Because you don't write
+bad code, and I did once, but I didn't commit it, but /they/ write bad
+code.
+
+Everyone talks about best practices and how to do it right. But
+no-one's talking about how to correct course when it goes wrong. We
+just say, "REWRITE".
+#+END_NOTES
+** Loose Contracts
+#+BEGIN_SRC purescript
+foo :: { name :: String | someRecord } -> HTML
+#+END_SRC
 * 4. Complexity Tracking
 #+BEGIN_CENTER
 Side Effects
@@ -400,26 +427,7 @@ the arguments right.
 - Can be understood on two logical levels.
 * From Here To The Future
 
-** Recovering From Bad Code
-#+BEGIN_QUOTE
-+It's better to inherit bad Haskell than   
-bad C.+
-
-It's better to inherit bad PureScript than bad JavaScript.
-
--- David Smith (ish)
-#+END_QUOTE
-
-#+BEGIN_NOTES
-Language support for making bad code better. Because you don't write
-bad code, and I did once, but I didn't commit it, but /they/ write bad
-code.
-
-Everyone talks about best practices and how to do it right. But
-no-one's talking about how to correct course when it goes wrong. We
-just say, "REWRITE".
-#+END_NOTES
-** Interop
+** Interop                                                         :noexport:
 #+BEGIN_CENTER
 Connecting to the Past!
 #+END_CENTER
@@ -428,16 +436,22 @@ Connecting to the Past!
 *Nyancat output!
 ** Phantom Types
 ** Streams
+** Autocompletion
 * Practicalities
 #+BEGIN_CENTER
 How to get started.
 #+END_CENTER
 *** PureScript Book
-*** Pulp
-*** Halogen?
-*** Demo?
+*** Basic Tools
+- =yarn= or =npm=
+- =pulp=
+- =bower= or =psc-package=
+*** Demos
+#+BEGIN_NOTES
 FizzBuzz - "How to get a job you don't want."
+#+END_NOTES
 * So Will That Get Us To The Future?
+** TODO Batman meme slap correctness
 * Questions?
 
 #+BEGIN_CENTER
