@@ -16,17 +16,21 @@ file:purescript_logo.png
 #+BEGIN_CENTER
 Tomorrow's JavaScript Today
 #+END_CENTER
-
+#+BEGIN_NOTES
+To see the future start with the past.
+#+END_NOTES
 ** Yesterday                                                     
 file:yesterday_and_today.jpg
-** JavaScript Lineage
+** JavaScript's Roots
 #+ATTR_REVEAL: :frag (appear)
  - The only programming language your grandmother has installed.
+ - There's one JavaScript, not one per browser.
  - Rushed into production.
- - There one JavaScript, not one per browser.
  - Was never designed to scale.
  - Was designed on 80s/90s technology.
 #+BEGIN_NOTES
+Things that make JS amazing.
+
 The "1 JS" achievement will never be unlocked again.
 10k lines is painful. Doesn't change much if it's 10x1k lines.
 #+END_NOTES
@@ -38,22 +42,26 @@ file:bowie_where.jpg
  - We would sort out the bugs in the spec.
  - We would look for a design that works in the large.
  - We would look for a design that's learnt from the past 20-30 years.
- - JavaScript as a Platform.
+
+#+BEGIN_NOTES
+If we could cherry-pick.
+#+END_NOTES
 ** Tomorrow
 file:where_do_we_go.jpg
+#+BEGIN_NOTES
+JavaScript as a Platform.
+#+END_NOTES
 ** PureScript Is...
 #+ATTR_REVEAL: :frag (appear)
 - A programming language.
 - That compiles to JavaScript.
-- Based on the last 20-30 years of Computer Science knowledge.
+- Based on the last 20 years of Computer Science knowledge.
 - Rich seam of ideas to use, learn from and even steal.
 
 #+BEGIN_NOTES
-...is a very strong candidate for that title. There's some unfamiliar
-syntax, and there are a lot of unfamiliar ideas (even though they're
-percolating through to the mainstream now), but given the speed our
-industry sometimes progresses, it's easy to believe that what
-mainstream JavaScript looks like in two decades, you can have today.
+Has ideas from THIS DECADE!!!
+
+Ship before Xmas - the baby Jesus wants you to.
 #+END_NOTES
 * Let's Talk About Types
 file:high_voltage.png
@@ -61,9 +69,6 @@ file:high_voltage.png
 #+BEGIN_CENTER
 Feature Highlights
 #+END_CENTER
-#+BEGIN_NOTES
-All these bits need concrete examples.
-#+END_NOTES
 * 1. Data Models
 #+BEGIN_CENTER
 Algebraic Data Types
@@ -100,50 +105,11 @@ data Role
 #+END_SRC
 #+ATTR_REVEAL: :frag (appear)
 *=OR=*
-#+ATTR_REVEAL: :frag (appear)
-(/Actually,/ *=XOR=*)
 #+BEGIN_NOTES 
-Some languages have this, often in a limited form.
-#+END_NOTES
-** The Billion Dollar Problem
-#+ATTR_REVEAL: :frag (appear)
-#+BEGIN_SRC purescript
-data SomeString 
-  = String 
-  | null
-  | undefined
-#+END_SRC
-#+ATTR_REVEAL: :frag (appear)
-#+BEGIN_SRC purescript
-data SomeNumber 
-  = Float
-  | null
-  | undefined
-  | NaN
-  | Infinity
-  | -Infinity
-#+END_SRC
-** The Billion Dollar Problem (2)
-#+BEGIN_SRC purescript
-data User 
-  = User { name :: ... }
-#+END_SRC
-#+ATTR_REVEAL: :frag (appear)
-#+BEGIN_SRC purescript
-data User
-  = User { name :: ... }
-  | NoUserYet
-#+END_SRC
-#+ATTR_REVEAL: :frag (appear)
-#+BEGIN_SRC purescript
-data Maybe a
-  = Just a
-  | Nothing
-  
--- Maybe User
-#+END_SRC
-#+BEGIN_NOTES
-If you want uncertainty, you get it. But it's not the default.
+One of these things, nothing else.
+Static: Some languages have this, often in a limited form.
+Static: Hearts, diamonds, spades, clubs.
+Dynamic: No constraint.
 #+END_NOTES
 ** Mix And Match Freely
 #+BEGIN_CENTER
@@ -166,6 +132,56 @@ data PaymentResponse
   | HttpError { statusCode :: Int, message :: String }
   | AuthError
 #+END_SRC
+** The Billion Dollar Problem
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+data SomeString 
+  = String 
+  | Null
+  | Undefined
+#+END_SRC
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+data SomeNumber 
+  = Float
+  | Null
+  | Undefined
+  | NaN
+  | Infinity
+  | -Infinity
+#+END_SRC
+** The Billion Dollar Solution
+#+BEGIN_SRC purescript
+data User 
+  = User { name :: ... }
+#+END_SRC
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+data User
+  = User { name :: ... }
+  | NoUserYet
+#+END_SRC
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+data Maybe a        | foo :: User -> Maybe User
+  = Just a          |
+  | Nothing         |
+#+END_SRC
+#+BEGIN_NOTES
+If you want uncertainty, you get it. But it's not the default.
+We've know this since the 90s.
+#+END_NOTES
+** ADTs
+
+Express What Is
+
+#+ATTR_REVEAL: :frag (appear)
+And What Is Not
+
+#+BEGIN_NOTES
+As rich as JSON
+Higher level
+#+END_NOTES
 
 ** Your Data's Shape Matters
 #+BEGIN_QUOTE
@@ -178,6 +194,8 @@ don't.
 #+END_QUOTE
 
 #+BEGIN_NOTES
+schema = rules about data's structure
+
 There's no such thing as a schema-less system. There are systems where
 you write your schema down and ones where you don't.
 -- Rich Hickey 
@@ -194,7 +212,7 @@ Every piece of code is a relationship with its user.
 #+END_NOTES
 ** We Check Them
 file:Consistency_hope1.png
-** Best Case
+** Really...
 file:Consistency_hope2.png
 ** In The Large  
 file:Consistency_Relationships.png
@@ -205,10 +223,10 @@ The point is, we don't really have good ways of saying, "I need
 this. I offer this." Except /saying/ it.
 #+END_NOTES
 
-** +Type-Checker+
-+Good Linter+
+** +Type-Checkers+
++Good Linters+
 
-/Really/ Good Linters can help.
+/Really Good/ Linters can help!
 
 ** Language Tracks Usage
 
@@ -233,25 +251,39 @@ Alternatively, add a Partial constraint to the type of the
 enclosing value.
 #+END_SRC
 
-** Define data in one place, have it checked everywhere for free.
-** Documentation (of a sort), free at the point of need.
-* 3. A Living Design Language
-#+BEGIN_CENTER
-Type Signatures
-#+END_CENTER
 #+BEGIN_NOTES
-TODO Pull some slides from types as a design tool.
+Excitement:
+1. This is a global check.
+2. When I'm done, I know I'm done.
+#+END_NOTES
+** Define data in one place, have it checked everywhere for free.
+** Documentation
+
+(Of a sort), free at the point of need.
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+foo :: PaymentResponse -> HTML
+foo response = ...
+#+END_SRC
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+bar :: User -> Array PaymentResponse
+bar user = ...
+#+END_SRC
+
+#+BEGIN_NOTES
+Living documentation.
+#+END_NOTES
+* 3. A Living Design Language
+
+#+ATTR_REVEAL: :frag (appear)
+- All design languages lie.
+- Except one.
+#+BEGIN_NOTES
+Documentation. UML. Unit tests claims.
 #+END_NOTES
 ** What Does This Do?
-#+BEGIN_SRC javascript
-var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!'
-  }
-});
-#+END_SRC
-** Two
+
 #+BEGIN_SRC javascript
 function calculateWinner(squares) {
   const lines = [
@@ -273,17 +305,23 @@ function calculateWinner(squares) {
 #+END_SRC
 ** In PureScript
 #+BEGIN_SRC purescript
-calculateWinner :: Array (Maybe Player) -> Maybe Player
+calculateWinner :: Array (Maybe Tile) -> Maybe Tile
 calculateWinner squares =
   let lines = ...
   in ...
 #+END_SRC
+
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+data Tile = X | O
+#+END_SRC
+
 #+BEGIN_NOTES
 Concise and precise. Not about checking but about conveying information.
 #+END_NOTES
 ** Refactoring
 #+BEGIN_SRC purescript
-calculateWinner :: Player -> Array (Maybe Player) -> Maybe Player
+calculateWinner :: Tile -> Array (Maybe Tile) -> Maybe Tile
 calculateWinner currentTurn squares =
   let lines = ...
   in ...
@@ -293,10 +331,6 @@ calculateWinner currentTurn squares =
 Concise and precise. Not about checking but about conveying information.
 #+END_NOTES
 ** Types As Design Tools
-
-#+BEGIN_SRC purescript
-foo :: String -> Int -> Int -> Int -> HTML
-#+END_SRC
 ** Worse Still
 #+BEGIN_SRC javascript
 var m = moment('2016-10-30')
@@ -307,47 +341,53 @@ m.isBetween('2016-01-01', '2016-10-30', null, '()'); //false
 m.isBetween('2016-01-01', '2016-10-30', null, '(]'); //true
 m.isBetween('2016-10-30', '2016-10-30', null, '[]'); //true
 #+END_SRC
-** Worse Still (2)
+** PureScript Says
 #+BEGIN_SRC purescript
 isBetween ::
   Moment
   -> String
   -> String
   -> Maybe String
-  -> String
-  -> Bool
+  -> Maybe String
+  -> Boolean
 #+END_SRC
+#+BEGIN_NOTES
+No guidance.
+Except documentation.
+Which lies.
+#+END_NOTES
 ** Better
+#+BEGIN_SRC purescript
+data Inclusivity                 
+  = Includes Date                
+  | Excludes Date                
+#+END_SRC
+
+#+ATTR_REVEAL: :frag (appear)
 #+BEGIN_SRC purescript
 data Inclusivity a 
   = Includes a
   | Excludes a
+#+END_SRC
 
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+...Inclusivity Date...
+...
+...Inclusivity Int...
+#+END_SRC
+
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
 isBetween ::
   Moment
   -> Inclusivity Moment
   -> Inclusivity Moment
   -> DateUnits
-  -> Bool
+  -> Boolean
 #+END_SRC
-** Recovering From Bad Code
-#+BEGIN_QUOTE
-+It's better to inherit bad Haskell than   
-bad C.+
-
-It's better to inherit bad PureScript than bad JavaScript.
-
--- David Smith (ish)
-#+END_QUOTE
-
 #+BEGIN_NOTES
-Language support for making bad code better. Because you don't write
-bad code, and I did once, but I didn't commit it, but /they/ write bad
-code.
-
-Everyone talks about best practices and how to do it right. But
-no-one's talking about how to correct course when it goes wrong. We
-just say, "REWRITE".
+Can still see one problem, but difficulty has been massively reduced.
 #+END_NOTES
 ** Loose Contracts
 #+BEGIN_SRC purescript
@@ -373,39 +413,64 @@ without mocking.
 #+END_QUOTE
 ** Spot The Difference
 #+BEGIN_SRC purescript
-fetchDocument :: DocumentId -> String
+summariseDocument :: String     -> String
 
-summariseDocument :: String -> String
+fetchDocument     :: DocumentId -> String
 
-renderDocument :: String -> ()
+renderDocument    :: String     -> ()
 #+END_SRC
+
+#+BEGIN_CENTER :class disclaimer
+/(Disclaimer: =()= is actually spelt =Unit= in PureScript.)/
+#+END_CENTER
 ** Track The Difference
 
 #+BEGIN_SRC purescript
--- Needs the Network
-fetchDocument :: DocumentId -> Eff (ajax :: AJAX) String
-
 -- Pure
 summariseDocument :: String -> String
-
--- Needs a Browser
-renderDocument :: String -> Eff (dom :: DOM) ()
 #+END_SRC
 
-** Refactoring Suggested:
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+-- Needs the Network
+fetchDocument     :: DocumentId -> Eff (ajax :: AJAX) String
+#+END_SRC
+
+#+ATTR_REVEAL: :frag (appear)
 #+BEGIN_SRC purescript
 -- Needs a Browser
-renderDocument :: String -> Eff (dom :: DOM) ()
+renderDocument    :: String -> Eff (dom :: DOM)   ()
+#+END_SRC
+
+** Track The Difference (2)                                        :noexport:
+#+BEGIN_SRC purescript
+foo :: DocumentId -> Eff (ajax :: AJAX, dom :: DOM) HTML
+#+END_SRC
+
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
+-- Needs the Network
+fetchDocument :: DocumentId -> Eff (ajax :: AJAX) String
 #+END_SRC
 
 #+ATTR_REVEAL: :frag (appear)
 #+BEGIN_SRC purescript
 -- Pure transformation of structure.
 markupDocument :: String -> HTML
+#+END_SRC
 
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_SRC purescript
 -- Fragile, but Write-Once
 render :: HTML -> Eff (dom :: DOM) ()
 #+END_SRC
+** Side Effects
+file:iceberg.jpg
+#+BEGIN_NOTES
+Imagine knowing if code is time/database dependent.
+
+Inverse: Imagine debugging.
+#+END_NOTES
 ** Complexity Tracking
 #+BEGIN_NOTES
 This is where I part ways with software craftsmanship. Yes, we need
@@ -418,40 +483,65 @@ Monads - Make Side-Effect tracking pleasant
 A type system that doesn't track side-effects is only helping you get
 the arguments right.
 #+END_NOTES
-** Footprint Reduction
 * PureScript
 #+ATTR_REVEAL: :frag (appear)
 - Can track what data is (and is not).
 - Can track relationships between code.
 - Can track growing complexity.
-- Can be understood on two logical levels.
-* From Here To The Future
+- Can make problems visible.
+** PureScript
+Works.
 
-** Interop                                                         :noexport:
-#+BEGIN_CENTER
-Connecting to the Past!
-#+END_CENTER
+#+BEGIN_NOTES
+Douglas Adams
+- Survival - How
+- Inquiry - Why
+- Sophistication - Where
+#+END_NOTES
 * And More...                                                      :noexport:
-** Testing - Types, Quickcheck, Strongcheck and TDD
-*Nyancat output!
+** Interop
+** Higher-Kinded Types & Typeclasses
+** Relationships between types (fundeps)
+** Quickcheck
 ** Phantom Types
 ** Streams
 ** Autocompletion
-* Practicalities
-#+BEGIN_CENTER
-How to get started.
-#+END_CENTER
-*** PureScript Book
-*** Basic Tools
-- =yarn= or =npm=
-- =pulp=
-- =bower= or =psc-package=
-*** Demos
+* How to get started.
+  
+Find the book, [[https://leanpub.com/purescript/read][PureScript By Example]].
+
+(It's free online!)
+
+/In a new directory:/  
+#+BEGIN_SRC sh
+$ npm i -g yarn
+$ yarn add purescript pulp
+$ yarn run pulp init
+$ yarn run pulp run
+#+END_SRC
+*** Demos                                                          :noexport:
 #+BEGIN_NOTES
 FizzBuzz - "How to get a job you don't want."
 #+END_NOTES
-* So Will That Get Us To The Future?
-** TODO Batman meme slap correctness
+** Recovering From Bad Code                                        :noexport:
+#+BEGIN_QUOTE
++It's better to inherit bad Haskell than   
+bad C.+
+
+It's better to inherit bad PureScript than bad JavaScript.
+
+-- David Smith (ish)
+#+END_QUOTE
+
+#+BEGIN_NOTES
+Language support for making bad code better. Because you don't write
+bad code, and I did once, but I didn't commit it, but /they/ write bad
+code.
+
+Everyone talks about best practices and how to do it right. But
+no-one's talking about how to correct course when it goes wrong. We
+just say, "REWRITE".
+#+END_NOTES
 * Questions?
 
 #+BEGIN_CENTER
