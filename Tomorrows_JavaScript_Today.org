@@ -389,7 +389,7 @@ isBetween ::
 #+BEGIN_NOTES
 Can still see one problem, but difficulty has been massively reduced.
 #+END_NOTES
-** Loose Contracts
+** Loose Contracts                                                 :noexport:
 #+BEGIN_SRC purescript
 foo :: { name :: String | someRecord } -> HTML
 #+END_SRC
@@ -493,6 +493,7 @@ the arguments right.
 Works.
 
 #+BEGIN_NOTES
+Linda!
 Douglas Adams
 - Survival - How
 - Inquiry - Why
